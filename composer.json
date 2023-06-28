@@ -3,7 +3,7 @@
     "description": "This package is used to store Eurostep's internal projects",
     "autoload": {
         "psr-4": {
-            "eurostep\\custom\\": "src/"
+            "Eurostep\\Custom\\": "src/"
         }
     },
     "authors": [

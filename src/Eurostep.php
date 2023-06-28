@@ -1,5 +1,5 @@
 <?php
-namespace eurostep\custom;
+namespace Eurostep\Custom;
 
 use Illuminate\Support\Facades\Storage;
 

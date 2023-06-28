@@ -1,6 +1,7 @@
 <?php
-namespace eurostep\custom;
+namespace Eurostep\Custom\Providers;
 
+use Eurostep\Custom\Eurostep;
 use Illuminate\Support\ServiceProvider;
 
 class EurostepServiceProvider extends ServiceProvider
@@ -8,10 +9,10 @@ class EurostepServiceProvider extends ServiceProvider
     public function register()
     {
         $this->publishes([
-            __DIR__.'/../config/eurostep.php' => config_path('eurostep.php'),
+            __DIR__ . '/../../config/eurostep.php' => config_path('eurostep.php'),
         ], 'config');
 
-        $this->mergeConfigFrom(__DIR__.'/../config/eurostep.php', 'eurostep');
+        $this->mergeConfigFrom(__DIR__ . '/../../config/eurostep.php', 'eurostep');
 
         $this->app->bind('eurostep', function ($app) {
             return new Eurostep($app->config->get('eurostep'));
