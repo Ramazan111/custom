@@ -6,6 +6,7 @@
             "Eurostep\\Custom\\": "src/"
         }
     },
+    "minimum-stability": "dev",
     "authors": [
         {
             "name": "RamazanRameta",
