@@ -16,5 +16,15 @@
             "email": "ramazanrameta94@gmail.com"
         }
     ],
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x-dev"
+        },
+        "laravel": {
+            "providers": [
+                "Eurostep\\Custom\\EurostepServiceProvider"
+            ]
+        }
+    },
     "require": {}
 }
