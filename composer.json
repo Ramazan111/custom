@@ -4,7 +4,10 @@
     "autoload": {
         "psr-4": {
             "Eurostep\\Custom\\": "src/"
-        }
+        },
+        "classmap": [
+            "src/Console/InstallCommand.php"
+        ]
     },
     "minimum-stability": "dev",
     "authors": [

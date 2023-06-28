@@ -1,6 +1,7 @@
 <?php
 namespace Eurostep\Custom\Providers;
 
+use Eurostep\Custom\Console\InstallCommand;
 use Eurostep\Custom\Eurostep;
 use Illuminate\Support\ServiceProvider;
 
@@ -21,6 +22,11 @@ class EurostepServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        // ...
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                InstallCommand::class,
+            ]);
+        }
+
     }
 }
