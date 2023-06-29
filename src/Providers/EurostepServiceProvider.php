@@ -1,7 +1,7 @@
 <?php
 namespace Eurostep\Custom\Providers;
 
-use Eurostep\Custom\Console\InstallCommand;
+use Eurostep\Custom\Console\Commands\InstallCommand;
 use Eurostep\Custom\Eurostep;
 use Illuminate\Support\ServiceProvider;
 
