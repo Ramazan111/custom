@@ -1,6 +1,6 @@
 <?php
 
-namespace Eurostep\Custom\Console;
+namespace Eurostep\Custom\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;

@@ -6,7 +6,7 @@
             "Eurostep\\Custom\\": "src/"
         },
         "classmap": [
-            "src/Console/InstallCommand.php"
+          "src/Console/Commands/InstallCommand.php"
         ]
     },
     "minimum-stability": "dev",
