@@ -20,7 +20,7 @@ class InstallCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Publish the Eurostep custom files';
+    protected $description = 'Publish Eurostep custom files';
 
     /**
      * Execute the console command.
@@ -46,26 +46,13 @@ class InstallCommand extends Command
 
     protected function updateStorageConfiguration()
     {
-        $configPath = config_path('filesystems.php');
-        $config = File::get($configPath);
-
-        // Update the configuration to inject the new adapter
-        $newConfig = str_replace(
-            "'default' => env('FILESYSTEM_DRIVER', 'local'),",
-            "'default' => env('FILESYSTEM_DRIVER', 'eurostep_root'),",
-            $config
-        );
-
-        // Write the updated configuration back to the file
-        File::put($configPath, $newConfig);
-
         // Configure the new adapter for the Eurostep driver
         config(['filesystems.disks.eurostep_root' => [
             'driver' => 'local',
             'root' => storage_path('application-1/public'),
         ]]);
 
-        // Optionally, you can set the configured storage as the default driver
+        // Set the configured storage as the default driver
         config(['filesystems.default' => 'eurostep_root']);
 
         // Reload the configuration cache to reflect the changes
