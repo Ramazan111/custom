@@ -30,3 +30,10 @@ Eurostep wants a new shared folder approach, where a server will contain all sto
         .
 ```
 - Run artisan command: `php artisan eurostep:install`
+
+
+### Steps to use
+
+- Initialize the object: `$eurostep = new Eurostep(config('eurostep'));`
+- Configure storage path: `$eurostep->configure(env('APP_NAME'));`
+- Configure storage drive: `$eurostep->storage('eurostep_root')->put({path}, '');`
