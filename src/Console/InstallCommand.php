@@ -13,7 +13,7 @@ class InstallCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'package:install';
+    protected $signature = 'eurostep:install';
 
     /**
      * The console command description.
