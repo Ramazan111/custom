@@ -3,6 +3,9 @@
 namespace Eurostep\Custom\Console;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class InstallCommand extends Command
 {
@@ -37,6 +40,38 @@ class InstallCommand extends Command
             '--tag' => 'config',
         ]);
 
+        $this->updateStorageConfiguration();
+
         $this->info('Package installed and configured successfully.');
     }
+
+    protected function updateStorageConfiguration()
+    {
+        $configPath = config_path('filesystems.php');
+        $config = File::get($configPath);
+
+        // Update the configuration to inject the new adapter
+        $newConfig = str_replace(
+            "'default' => env('FILESYSTEM_DRIVER', 'local'),",
+            "'default' => env('FILESYSTEM_DRIVER', 'eurostep_root'),",
+            $config
+        );
+
+        // Write the updated configuration back to the file
+        File::put($configPath, $newConfig);
+
+        // Configure the new adapter for the Eurostep driver
+        config(['filesystems.disks.eurostep_root' => [
+            'driver' => 'local',
+            'root' => storage_path('application-1/public'), // Replace with the actual root path
+        ]]);
+
+        // Optionally, you can set the configured storage as the default driver
+        config(['filesystems.default' => 'eurostep_root']);
+
+        // Reload the configuration cache to reflect the changes
+        Artisan::call('config:cache');
+
+    }
+
 }
