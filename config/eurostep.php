@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'storage_root' => '/storage',
+    'storage_root' => '/eurostep',
 ];

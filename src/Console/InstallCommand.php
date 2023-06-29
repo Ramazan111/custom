@@ -4,7 +4,6 @@ namespace Eurostep\Custom\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 
 class InstallCommand extends Command
@@ -63,15 +62,14 @@ class InstallCommand extends Command
         // Configure the new adapter for the Eurostep driver
         config(['filesystems.disks.eurostep_root' => [
             'driver' => 'local',
-            'root' => storage_path('application-1/public'), // Replace with the actual root path
+            'root' => storage_path('application-1/public'),
         ]]);
 
         // Optionally, you can set the configured storage as the default driver
         config(['filesystems.default' => 'eurostep_root']);
 
         // Reload the configuration cache to reflect the changes
+        Artisan::call('config:clear');
         Artisan::call('config:cache');
-
     }
-
 }
