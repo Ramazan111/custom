@@ -16,6 +16,7 @@ Eurostep wants a new shared folder approach, where a server will contain all sto
     }
 ],
 ```
+- Add ` "eurostep/custom": "@dev"` under `"require"` at composer.json
 - Run `composer update` || `composer install`
 - Add `EurostepServiceProvider.php` to app.php config file
 ```
